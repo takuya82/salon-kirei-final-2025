@@ -556,6 +556,129 @@
             line-height: 1.8;
         }
 
+        /* 希望日時セクション */
+        .datetime-section {
+            background: linear-gradient(135deg, #F5F5DC 0%, #FDF5E6 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .section-subtitle {
+            color: #2D5016;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .date-note, .time-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .time-note {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .weekday-note, .weekend-note {
+            display: inline-block;
+            padding: 3px 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* サービス選択ラジオボタン */
+        .service-label {
+            display: block;
+            margin-bottom: 15px;
+            color: #2D5016;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .service-options {
+            display: grid;
+            gap: 15px;
+        }
+
+        .service-option {
+            position: relative;
+        }
+
+        .service-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-label {
+            display: block;
+            padding: 20px 25px;
+            background: #FAFAFA;
+            border: 2px solid #E8E8E8;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .radio-label:hover {
+            border-color: #D4AF37;
+            background: white;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+        }
+
+        .service-option input[type="radio"]:checked + .radio-label {
+            border-color: #2D5016;
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.05), rgba(212, 175, 55, 0.05));
+            box-shadow: 0 5px 20px rgba(45, 80, 22, 0.15);
+        }
+
+        .service-option input[type="radio"]:checked + .radio-label::before {
+            content: '✓';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 25px;
+            height: 25px;
+            background: #2D5016;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .service-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2D5016;
+            margin-bottom: 5px;
+        }
+
+        .service-price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #D4AF37;
+            margin-bottom: 8px;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
         /* お問い合わせ */
         .contact {
             background: #2D5016;
@@ -707,6 +830,32 @@
                 padding: 18px 40px;
                 font-size: 1.1rem;
             }
+
+            .datetime-section {
+                padding: 25px 20px;
+                margin: 25px 0;
+            }
+
+            .time-note {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .service-options {
+                gap: 12px;
+            }
+
+            .radio-label {
+                padding: 15px 20px;
+            }
+
+            .service-option input[type="radio"]:checked + .radio-label::before {
+                top: 12px;
+                right: 15px;
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -747,6 +896,39 @@
             .reservation-button {
                 padding: 16px 30px;
                 font-size: 1rem;
+            }
+
+            .datetime-section {
+                padding: 20px 15px;
+                margin: 20px 0;
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .service-name {
+                font-size: 1rem;
+            }
+
+            .service-price {
+                font-size: 0.9rem;
+            }
+
+            .service-desc {
+                font-size: 0.85rem;
+            }
+
+            .radio-label {
+                padding: 12px 15px;
+            }
+
+            .service-option input[type="radio"]:checked + .radio-label::before {
+                top: 10px;
+                right: 12px;
+                width: 18px;
+                height: 18px;
+                font-size: 11px;
             }
         }
     </style>
@@ -1111,36 +1293,57 @@
                         <label for="reserveEmail">メールアドレス *</label>
                         <input type="email" id="reserveEmail" name="reserveEmail" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="reserveDate">希望日 *</label>
-                            <input type="date" id="reserveDate" name="reserveDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="reserveTime">希望時間 *</label>
-                            <select id="reserveTime" name="reserveTime" required>
-                                <option value="">時間を選択してください</option>
-                                <option value="10:00">10:00</option>
-                                <option value="11:00">11:00</option>
-                                <option value="12:00">12:00</option>
-                                <option value="13:00">13:00</option>
-                                <option value="14:00">14:00</option>
-                                <option value="15:00">15:00</option>
-                                <option value="16:00">16:00</option>
-                                <option value="17:00">17:00</option>
-                                <option value="18:00">18:00</option>
-                                <option value="19:00">19:00</option>
-                            </select>
+                    
+                    <!-- 希望日時セクション -->
+                    <div class="datetime-section">
+                        <h3 class="section-subtitle">希望日時</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reserveDate">希望日 *</label>
+                                <input type="date" id="reserveDate" name="reserveDate" required>
+                                <div class="date-note">※月曜日は定休日です</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="reserveTime">希望時間 *</label>
+                                <select id="reserveTime" name="reserveTime" required disabled>
+                                    <option value="">まず日付を選択してください</option>
+                                </select>
+                                <div class="time-note">
+                                    <span class="weekday-note">平日: 10:00〜20:00</span>
+                                    <span class="weekend-note">土日祝: 9:00〜19:00</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="reserveService">希望サービス *</label>
-                        <select id="reserveService" name="reserveService" required>
-                            <option value="">サービスを選択してください</option>
-                            <option value="フェイシャルベーシック">フェイシャルベーシック（¥8,000〜）</option>
-                            <option value="フェイシャルプレミアム">フェイシャルプレミアム（¥15,000〜）</option>
-                            <option value="ボディリラックス">ボディリラックス（¥12,000〜）</option>
-                        </select>
+                        <label class="service-label">希望サービス *</label>
+                        <div class="service-options">
+                            <div class="service-option">
+                                <input type="radio" id="service1" name="reserveService" value="フェイシャルベーシック" required>
+                                <label for="service1" class="radio-label">
+                                    <div class="service-name">フェイシャルベーシック</div>
+                                    <div class="service-price">¥8,000〜</div>
+                                    <div class="service-desc">素肌本来の美しさを引き出すベーシックケア</div>
+                                </label>
+                            </div>
+                            <div class="service-option">
+                                <input type="radio" id="service2" name="reserveService" value="フェイシャルプレミアム" required>
+                                <label for="service2" class="radio-label">
+                                    <div class="service-name">フェイシャルプレミアム</div>
+                                    <div class="service-price">¥15,000〜</div>
+                                    <div class="service-desc">年齢サインに集中的にアプローチする贅沢なコース</div>
+                                </label>
+                            </div>
+                            <div class="service-option">
+                                <input type="radio" id="service3" name="reserveService" value="ボディリラックス" required>
+                                <label for="service3" class="radio-label">
+                                    <div class="service-name">ボディリラックス</div>
+                                    <div class="service-price">¥12,000〜</div>
+                                    <div class="service-desc">深い癒しとリフレッシュを提供するボディトリートメント</div>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="reserveRequest">ご要望・ご質問（任意）</label>
@@ -1384,6 +1587,50 @@
 
         // ページ読み込み時に最小日付を設定
         setMinDate();
+
+        // 日付選択時の時間オプション更新
+        document.getElementById('reserveDate').addEventListener('change', function() {
+            const selectedDate = new Date(this.value);
+            const timeSelect = document.getElementById('reserveTime');
+            
+            if (this.value) {
+                // 月曜日チェック（定休日）
+                if (selectedDate.getDay() === 1) {
+                    timeSelect.innerHTML = '<option value="">月曜日は定休日です</option>';
+                    timeSelect.disabled = true;
+                    return;
+                }
+                
+                // 時間選択肢を有効化
+                timeSelect.disabled = false;
+                
+                // 曜日判定（0:日曜, 1:月曜, ..., 6:土曜）
+                const dayOfWeek = selectedDate.getDay();
+                const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6); // 日曜日または土曜日
+                
+                // 時間選択肢を生成
+                let timeOptions = '<option value="">時間を選択してください</option>';
+                
+                if (isWeekend) {
+                    // 土日祝：9:00〜19:00
+                    for (let hour = 9; hour <= 19; hour++) {
+                        const timeStr = `${hour}:00`;
+                        timeOptions += `<option value="${timeStr}">${timeStr}</option>`;
+                    }
+                } else {
+                    // 平日：10:00〜20:00
+                    for (let hour = 10; hour <= 20; hour++) {
+                        const timeStr = `${hour}:00`;
+                        timeOptions += `<option value="${timeStr}">${timeStr}</option>`;
+                    }
+                }
+                
+                timeSelect.innerHTML = timeOptions;
+            } else {
+                timeSelect.innerHTML = '<option value="">まず日付を選択してください</option>';
+                timeSelect.disabled = true;
+            }
+        });
 
         // パフォーマンス最適化: 画像の遅延読み込み
         if ('IntersectionObserver' in window) {
