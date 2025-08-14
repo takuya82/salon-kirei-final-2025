@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(timeout:*)",
+      "WebFetch(domain:unsplash.com)",
+      "Bash(git init:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git add:*)",
+      "Bash(git branch:*)",
+      "Bash(rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(git remote remove:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

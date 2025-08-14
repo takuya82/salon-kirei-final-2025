@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon de Kirei - 自然の力で輝く美しさを</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(45, 80, 22, 0.4), rgba(45, 80, 22, 0.4)),
+                        url('https://images.unsplash.com/photo-1552693673-1bf958298935?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero .description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #D4AF37, #F4E197);
+            color: #2D5016;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #F4E197, #D4AF37);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        /* セクション共通 */
+        .section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2D5016;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* サービスメニュー */
+        .services {
+            background: #FDF5E6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border: 2px solid #D4AF37;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #2D5016;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .service-card .price {
+            font-size: 1.3rem;
+            color: #D4AF37;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* サロンの特徴 */
+        .features {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            color: #2D5016;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .feature-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* お客様の声 */
+        .reviews {
+            background: white;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .review-card {
+            background: #FDF5E6;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #D4AF37;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .review-stars {
+            margin-right: 15px;
+        }
+
+        .review-stars svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 3px;
+        }
+
+        .review-name {
+            font-weight: 600;
+            color: #2D5016;
+            font-size: 1.1rem;
+        }
+
+        .review-age {
+            color: #666;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        .review-text {
+            color: #333;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .review-service {
+            color: #D4AF37;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* 変化を実感 */
+        .transformation {
+            background: linear-gradient(135deg, #FDF5E6 0%, #F5F5DC 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .transformation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .transformation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 60px;
+            align-items: center;
+        }
+
+        .transformation-item {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .transformation-visual {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .transformation-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .transformation-title {
+            font-size: 1.8rem;
+            color: #2D5016;
+            margin-bottom: 15px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .transformation-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .before-after {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .arrow-transform {
+            width: 40px;
+            height: 40px;
+            opacity: 0.7;
+        }
+
+        .face-outline, .skin-texture {
+            transition: all 2s ease-in-out;
+        }
+
+        .transformation:hover .face-outline {
+            transform: scale(0.95);
+        }
+
+        .transformation:hover .skin-glow {
+            opacity: 1;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .skin-glow {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .sparkle-effect {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        /* お問い合わせ */
+        .contact {
+            background: #2D5016;
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #D4AF37;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #D4AF37;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #D4AF37, #F4E197);
+            color: #2D5016;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(135deg, #F4E197, #D4AF37);
+            transform: translateY(-2px);
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.4rem;
+            }
+
+            .hero .description {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .review-card {
+                padding: 30px 20px;
+            }
+
+            .transformation-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .transformation-visual {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .service-card,
+            .contact-form {
+                padding: 30px 20px;
+            }
+
+            .transformation-visual {
+                width: 120px;
+                height: 120px;
+            }
+
+            .transformation-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🌿 Salon de Kirei</h1>
+            <div class="subtitle">自然の力で輝く美しさを</div>
+            <div class="description">心ほどける時間と、明日が楽しみになる変化をお届けします</div>
+            <a href="#contact" class="cta-button">ご予約・お問い合わせ</a>
+        </div>
+    </section>
+
+    <!-- サービスメニュー -->
+    <section class="section services" id="services">
+        <div class="container">
+            <h2 class="section-title">サービスメニュー</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>フェイシャルベーシック</h3>
+                    <div class="price">¥8,000〜</div>
+                    <p>素肌本来の美しさを引き出すベーシックケア。丁寧なクレンジングから保湿まで、お肌の基本的なお手入れを行います。</p>
+                </div>
+                <div class="service-card">
+                    <h3>フェイシャルプレミアム</h3>
+                    <div class="price">¥15,000〜</div>
+                    <p>年齢サインに集中的にアプローチする贅沢なコース。高級美容液とハンドテクニックで、より深いケアを実現します。</p>
+                </div>
+                <div class="service-card">
+                    <h3>ボディリラックス</h3>
+                    <div class="price">¥12,000〜</div>
+                    <p>深い癒しとリフレッシュを提供するボディトリートメント。日頃の疲れを癒し、心身ともにリフレッシュできます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- サロンの特徴 -->
+    <section class="section features" id="features">
+        <div class="container">
+            <h2 class="section-title">サロンの特徴</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#2D5016;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M50 15 C65 15, 80 30, 80 45 C80 60, 65 75, 50 85 C35 75, 20 60, 20 45 C20 30, 35 15, 50 15 Z" fill="url(#leafGradient)" stroke="none"/>
+                            <path d="M50 85 Q50 70, 50 55" stroke="url(#leafGradient)" stroke-width="2" fill="none"/>
+                            <path d="M50 55 Q35 50, 25 40" stroke="url(#leafGradient)" stroke-width="1.5" fill="none" opacity="0.7"/>
+                            <path d="M50 55 Q65 50, 75 40" stroke="url(#leafGradient)" stroke-width="1.5" fill="none" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <h3>オーガニック製品使用</h3>
+                    <p>お肌に優しい天然由来の高品質オーガニック製品のみを使用し、安心・安全な施術をご提供いたします。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="roomGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#2D5016;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="15" y="25" width="70" height="50" rx="5" fill="none" stroke="url(#roomGradient)" stroke-width="3"/>
+                            <rect x="25" y="35" width="15" height="20" rx="2" fill="url(#roomGradient)" opacity="0.7"/>
+                            <rect x="55" y="35" width="15" height="20" rx="2" fill="url(#roomGradient)" opacity="0.7"/>
+                            <circle cx="40" cy="60" r="4" fill="url(#roomGradient)" opacity="0.8"/>
+                            <circle cx="60" cy="60" r="4" fill="url(#roomGradient)" opacity="0.8"/>
+                            <path d="M75 45 L85 40 L85 70 L75 65" fill="url(#roomGradient)" opacity="0.6"/>
+                            <rect x="78" y="47" width="2" height="8" fill="url(#roomGradient)"/>
+                        </svg>
+                    </div>
+                    <h3>プライベート空間</h3>
+                    <p>完全個室でのプライベート施術により、他の方を気にすることなく、ゆったりとしたお時間をお過ごしいただけます。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="expertGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#2D5016;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="30" r="12" fill="url(#expertGradient)" opacity="0.8"/>
+                            <path d="M50 42 C40 42, 32 50, 32 60 L32 75 C32 78, 35 80, 38 80 L62 80 C65 80, 68 78, 68 75 L68 60 C68 50, 60 42, 50 42" fill="url(#expertGradient)" opacity="0.7"/>
+                            <circle cx="42" cy="55" r="3" fill="url(#expertGradient)"/>
+                            <circle cx="58" cy="55" r="3" fill="url(#expertGradient)"/>
+                            <path d="M25 65 Q30 60, 35 65 Q30 70, 25 65" fill="url(#expertGradient)" opacity="0.6"/>
+                            <path d="M75 65 Q70 60, 65 65 Q70 70, 75 65" fill="url(#expertGradient)" opacity="0.6"/>
+                            <circle cx="50" cy="85" r="8" fill="none" stroke="url(#expertGradient)" stroke-width="2" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    <h3>経験豊富なスタッフ</h3>
+                    <p>豊富な経験と専門知識を持つエステティシャンが、お客様一人一人に最適な施術をご提案いたします。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="customGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#2D5016;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="20" fill="none" stroke="url(#customGradient)" stroke-width="3" opacity="0.8"/>
+                            <circle cx="50" cy="30" r="4" fill="url(#customGradient)"/>
+                            <circle cx="70" cy="50" r="4" fill="url(#customGradient)"/>
+                            <circle cx="50" cy="70" r="4" fill="url(#customGradient)"/>
+                            <circle cx="30" cy="50" r="4" fill="url(#customGradient)"/>
+                            <circle cx="62" cy="38" r="3" fill="url(#customGradient)" opacity="0.7"/>
+                            <circle cx="62" cy="62" r="3" fill="url(#customGradient)" opacity="0.7"/>
+                            <circle cx="38" cy="62" r="3" fill="url(#customGradient)" opacity="0.7"/>
+                            <circle cx="38" cy="38" r="3" fill="url(#customGradient)" opacity="0.7"/>
+                            <path d="M50 35 L50 45" stroke="url(#customGradient)" stroke-width="2"/>
+                            <path d="M65 50 L55 50" stroke="url(#customGradient)" stroke-width="2"/>
+                            <path d="M50 65 L50 55" stroke="url(#customGradient)" stroke-width="2"/>
+                            <path d="M35 50 L45 50" stroke="url(#customGradient)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>カスタマイズ施術</h3>
+                    <p>お客様のお肌の状態やご要望に合わせて、施術内容を細かくカスタマイズし、最適な結果をお届けします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section class="section reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">お客様の声</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-stars">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="starGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#F4E197;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="review-name">佐藤美香様</div>
+                            <div class="review-age">(30代)</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        「フェイシャルプレミアムコースを受けました。施術後、肌のトーンが明らかに明るくなり、触り心地も全然違います。友人からも『肌がキレイになったね』と褒められました。月1回のペースで通っています。」
+                    </div>
+                    <div class="review-service">利用サービス: フェイシャルプレミアム</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-stars">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="review-name">田中麻美様</div>
+                            <div class="review-age">(40代)</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "年齢とともに気になっていた目元のたるみとほうれい線が、3回の施術で明らかに改善しました。エステティシャンの方の技術力の高さと、オーガニック製品の効果を実感しています。"
+                    </div>
+                    <div class="review-service">利用サービス: フェイシャルプレミアム</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-stars">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGradient1)"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="review-name">山田優子様</div>
+                            <div class="review-age">(20代)</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "ボディリラックスコースがとても気に入っています。仕事のストレスで肩こりがひどかったのですが、施術後は体が軽やかになり、睡眠の質も向上しました。完全個室なのでリラックスできます。"
+                    </div>
+                    <div class="review-service">利用サービス: ボディリラックス</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 変化を実感 -->
+    <section class="section transformation" id="transformation">
+        <div class="container">
+            <h2 class="section-title">変化を実感</h2>
+            <div class="transformation-grid">
+                <div class="transformation-item">
+                    <div class="transformation-title">小顔効果</div>
+                    <div class="transformation-visual">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#2D5016;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.8" />
+                                </linearGradient>
+                                <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.6" />
+                                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0" />
+                                </radialGradient>
+                            </defs>
+                            
+                            <!-- ビフォア -->
+                            <g class="before-state">
+                                <ellipse cx="70" cy="100" rx="35" ry="45" fill="none" stroke="url(#faceGradient)" stroke-width="2" opacity="0.6"/>
+                                <text x="70" y="160" text-anchor="middle" fill="#666" font-size="12" font-family="Noto Sans JP">Before</text>
+                            </g>
+                            
+                            <!-- 矢印 -->
+                            <path d="M110 95 L125 100 L110 105 M105 100 L130 100" stroke="url(#faceGradient)" stroke-width="2" fill="none" class="arrow-transform"/>
+                            
+                            <!-- アフター -->
+                            <g class="after-state">
+                                <ellipse cx="150" cy="100" rx="28" ry="38" fill="none" stroke="url(#faceGradient)" stroke-width="2" class="face-outline"/>
+                                <circle cx="150" cy="100" r="35" fill="url(#glowGradient)" class="skin-glow" opacity="0.3"/>
+                                <text x="150" y="160" text-anchor="middle" fill="#2D5016" font-size="12" font-family="Noto Sans JP" font-weight="600">After</text>
+                                
+                                <!-- キラキラエフェクト -->
+                                <circle cx="135" cy="85" r="2" fill="#D4AF37" class="sparkle-effect" opacity="0"/>
+                                <circle cx="165" cy="90" r="1.5" fill="#D4AF37" class="sparkle-effect" opacity="0" style="animation-delay: 0.5s"/>
+                                <circle cx="145" cy="115" r="2.5" fill="#D4AF37" class="sparkle-effect" opacity="0" style="animation-delay: 1s"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="transformation-description">
+                        手技による顔筋ケアで、フェイスラインがすっきりした小顔に。たるみやむくみを改善し、若々しい印象を実現します。
+                    </div>
+                </div>
+                
+                <div class="transformation-item">
+                    <div class="transformation-title">美肌効果</div>
+                    <div class="transformation-visual">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="skinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#2D5016;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.8" />
+                                </linearGradient>
+                                <pattern id="roughSkin" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+                                    <circle cx="2" cy="2" r="0.5" fill="#999" opacity="0.3"/>
+                                </pattern>
+                                <pattern id="smoothSkin" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+                                    <circle cx="4" cy="4" r="0.5" fill="#D4AF37" opacity="0.1"/>
+                                </pattern>
+                                <radialGradient id="skinGlow" cx="50%" cy="50%" r="70%">
+                                    <stop offset="0%" style="stop-color:#F4E197;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#F4E197;stop-opacity:0" />
+                                </radialGradient>
+                            </defs>
+                            
+                            <!-- ビフォア -->
+                            <g class="before-skin">
+                                <circle cx="70" cy="100" r="30" fill="url(#roughSkin)" stroke="url(#skinGradient)" stroke-width="1" opacity="0.7"/>
+                                <text x="70" y="145" text-anchor="middle" fill="#666" font-size="12" font-family="Noto Sans JP">Before</text>
+                                <!-- 肌荒れ表現 -->
+                                <circle cx="65" cy="95" r="1" fill="#999" opacity="0.6"/>
+                                <circle cx="75" cy="105" r="0.8" fill="#999" opacity="0.6"/>
+                                <circle cx="68" cy="108" r="1.2" fill="#999" opacity="0.6"/>
+                            </g>
+                            
+                            <!-- 矢印 -->
+                            <path d="M110 95 L125 100 L110 105 M105 100 L130 100" stroke="url(#skinGradient)" stroke-width="2" fill="none" class="arrow-transform"/>
+                            
+                            <!-- アフター -->
+                            <g class="after-skin">
+                                <circle cx="150" cy="100" r="30" fill="url(#smoothSkin)" stroke="url(#skinGradient)" stroke-width="1" class="skin-texture"/>
+                                <circle cx="150" cy="100" r="35" fill="url(#skinGlow)" class="skin-glow" opacity="0.4"/>
+                                <text x="150" y="145" text-anchor="middle" fill="#2D5016" font-size="12" font-family="Noto Sans JP" font-weight="600">After</text>
+                                
+                                <!-- ツヤエフェクト -->
+                                <ellipse cx="145" cy="95" rx="3" ry="1.5" fill="#F4E197" opacity="0.8" class="sparkle-effect"/>
+                                <ellipse cx="155" cy="105" rx="2" ry="1" fill="#F4E197" opacity="0.6" class="sparkle-effect" style="animation-delay: 0.8s"/>
+                                <circle cx="150" cy="100" r="15" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.3" class="skin-glow"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="transformation-description">
+                        オーガニック成分と専門技術で、肌のキメやハリが激的に改善。透明感あふれる美しい素肌へと導きます。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ・アクセス -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">お問い合わせ・アクセス</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>📍 アクセス</h3>
+                    <p>〒150-0001<br>東京都渋谷区神宮前1-2-3 キレイビル3F</p>
+                    <p>JR原宿駅より徒歩5分<br>地下鉄明治神宮前駅より徒歩3分</p>
+                    
+                    <h3>⏰ 営業時間</h3>
+                    <p>平日: 10:00〜20:00<br>土日祝: 9:00〜19:00</p>
+                    <p>定休日: 毎週月曜日</p>
+                    
+                    <h3>📞 お電話</h3>
+                    <p>03-1234-5678</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">お名前 *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">お電話番号</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">ご希望やお問い合わせ内容</label>
+                            <textarea id="message" name="message" placeholder="ご希望の施術メニューやご質問などをお聞かせください"></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">送信する</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // スクロールアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // フォーム送信処理
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // フォームデータを取得
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // 簡単なバリデーション
+            if (!data.name || !data.email) {
+                alert('お名前とメールアドレスは必須項目です。');
+                return;
+            }
+            
+            // 送信成功メッセージ（実際のプロジェクトではサーバーに送信）
+            alert('お問い合わせありがとうございます。\n2営業日以内にご連絡いたします。');
+            this.reset();
+        });
+
+        // パフォーマンス最適化: 画像の遅延読み込み
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+</body>
+</html>
